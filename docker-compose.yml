@@ -1,0 +1,11 @@
+# Sử dụng image chính thức của Swagger UI
+FROM swaggerapi/swagger-ui
+
+# Tạo thư mục chứa file YAML trong container
+RUN mkdir -p /usr/share/nginx/html/docs
+
+# Copy file openapi.yaml từ máy host vào container
+COPY openapi.yaml /usr/share/nginx/html/docs/openapi.yaml
+
+# Chỉ định file YAML là nguồn để Swagger UI render
+ENV SWAGGER_JSON=/usr/share/nginx/html/docs/openapi.yaml
